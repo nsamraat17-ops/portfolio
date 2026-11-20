@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -6,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Samraat | Data Analyst Portfolio</title>
   
-  <!-- Google Fonts: Inter -->
-  <link rel="preconnect" href="https://fonts.googleapi00s.com">
+  <!-- Google Fonts: Inter (Fixed typo in URL) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   
@@ -37,64 +36,73 @@
   <!-- Lucide Icons -->
   <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="bg-[#f8fafc] text-slate-800 font-sans antialiased selection:bg-brand-500 selection:text-white">
+<body class="bg-[#f8fafc] text-slate-800 font-sans antialiased selection:bg-brand-500 selection:text-white overflow-x-hidden">
 
   <!-- ================= NAVBAR ================= -->
-  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200">
-    <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+  <header class="sticky top-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200 transition-all">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 h-20 flex items-center justify-between">
       <!-- Logo -->
-      <a href="#home" class="flex items-center gap-2.5">
-        <div class="w-10 h-10 rounded-xl bg-brand-600 flex items-center justify-center text-white shadow-md shadow-brand-500/20">
+      <a href="#home" class="flex items-center gap-2.5 group">
+        <div class="w-10 h-10 rounded-xl bg-brand-600 flex items-center justify-center text-white shadow-md shadow-brand-500/20 group-hover:scale-105 transition-transform">
           <i data-lucide="bar-chart-2" class="w-5 h-5"></i>
         </div>
         <span class="text-xl font-bold tracking-tight text-slate-900">SAMRAAT<span class="text-brand-600">.Data</span></span>
       </a>
 
       <!-- Desktop Nav Links -->
-      <nav class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
-        <a href="#home" class="hover:text-brand-600 transition-colors">Home</a>
-        <a href="#about" class="hover:text-brand-600 transition-colors">About</a>
-        <a href="#skills" class="hover:text-brand-600 transition-colors">Skills</a>
-        <a href="#projects" class="hover:text-brand-600 transition-colors">Projects</a>
-        <a href="#experience" class="hover:text-brand-600 transition-colors">Experience</a>
-        <a href="#contact" class="hover:text-brand-600 transition-colors">Contact</a>
-      </nav>.l3
+      <nav id="desktopNav" class="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
+        <a href="#home" class="nav-link hover:text-brand-600 transition-colors py-1">Home</a>
+        <a href="#about" class="nav-link hover:text-brand-600 transition-colors py-1">About</a>
+        <a href="#skills" class="nav-link hover:text-brand-600 transition-colors py-1">Skills</a>
+        <a href="#projects" class="nav-link hover:text-brand-600 transition-colors py-1">Projects</a>
+        <a href="#experience" class="nav-link hover:text-brand-600 transition-colors py-1">Experience</a>
+        <a href="#contact" class="nav-link hover:text-brand-600 transition-colors py-1">Contact</a>
+      </nav>
 
       <!-- Right Action & Status -->
       <div class="hidden md:flex items-center gap-4">
-        <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 ring-4 ring-emerald-100 animate-pulse" title="Available for opportunities"></div>
+        <div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/60">
+          <div class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" title="Available for opportunities"></div>
+          <span class="text-xs font-semibold text-emerald-700">Open to Work</span>
+        </div>
         <a href="#contact" class="px-5 py-2.5 rounded-xl bg-brand-600 text-white text-sm font-semibold hover:bg-brand-700 shadow-md shadow-brand-600/20 transition-all">
           Get In Touch
         </a>
       </div>
 
       <!-- Mobile Menu Button -->
-      <button id="mobileMenuBtn" class="md:hidden p-2 text-slate-600 hover:text-slate-900">
-        <i data-lucide="menu" class="w-6 h-6"></i>
+      <button id="mobileMenuBtn" aria-label="Toggle Menu" class="md:hidden p-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors">
+        <i id="menuIconOpen" data-lucide="menu" class="w-6 h-6"></i>
+        <i id="menuIconClose" data-lucide="x" class="w-6 h-6 hidden"></i>
       </button>
     </div>
 
     <!-- Mobile Nav Dropdown -->
-    <div id="mobileMenu" class="hidden md:hidden px-6 pt-2 pb-6 border-t border-slate-100 bg-white">
-      <div class="flex flex-col gap-4 text-sm font-medium text-slate-600">
-        <a href="#home" class="py-1 hover:text-brand-600">Home</a>
-        <a href="#about" class="py-1 hover:text-brand-600">About</a>
-        <a href="#skills" class="py-1 hover:text-brand-600">Skills</a>
-        <a href="#projects" class="py-1 hover:text-brand-600">Projects</a>
-        <a href="#experience" class="py-1 hover:text-brand-600">Experience</a>
-        <a href="#contact" class="py-1 hover:text-brand-600">Contact</a>
+    <div id="mobileMenu" class="hidden md:hidden px-6 pt-3 pb-6 border-t border-slate-100 bg-white shadow-lg">
+      <div class="flex flex-col gap-3 text-sm font-medium text-slate-600">
+        <a href="#home" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">Home</a>
+        <a href="#about" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">About</a>
+        <a href="#skills" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">Skills</a>
+        <a href="#projects" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">Projects</a>
+        <a href="#experience" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">Experience</a>
+        <a href="#contact" class="mobile-nav-link py-2 px-3 rounded-lg hover:bg-brand-50 hover:text-brand-600 transition-colors">Contact</a>
+        <div class="pt-2 border-t border-slate-100 mt-1">
+          <a href="#contact" class="mobile-nav-link block w-full text-center px-5 py-3 rounded-xl bg-brand-600 text-white font-semibold hover:bg-brand-700 shadow-sm">
+            Get In Touch
+          </a>
+        </div>
       </div>
     </div>
   </header>
 
   <!-- ================= HERO SECTION ================= -->
-  <section id="home" class="pt-16 pb-20 md:pt-24 md:pb-28 max-w-7xl mx-auto px-6">
+  <section id="home" class="pt-12 pb-20 md:pt-20 md:pb-28 max-w-7xl mx-auto px-4 sm:px-6">
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
       
       <!-- Left Content -->
       <div class="lg:col-span-7 space-y-6">
         <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-50 border border-brand-100 text-brand-700 text-xs font-semibold uppercase tracking-wider">
-          <span class="w-2 h-2 rounded-full bg-brand-600"></span>
+          <span class="w-2 h-2 rounded-full bg-brand-600 animate-ping"></span>
           Available for New Opportunities
         </div>
 
@@ -107,16 +115,16 @@
         </p>
 
         <p class="text-slate-600 text-base sm:text-lg leading-relaxed max-w-2xl">
-          Specializing in Excel, SQL, Python, Tableau, Power BI and to bridge complex datasets with strategic business intelligence. Uncovering trends, building automated dashboards, and driving data-first decisions.
+          Specializing in Excel, SQL, Python, Tableau, and Power BI to bridge complex datasets with strategic business intelligence. Uncovering trends, building automated dashboards, and driving data-first decisions.
         </p>
 
         <!-- CTA Buttons -->
         <div class="flex flex-wrap items-center gap-4 pt-2">
-          <a href="#projects" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-brand-600 text-white font-semibold text-sm hover:bg-brand-700 shadow-md shadow-brand-600/20 transition-all">
+          <a href="#projects" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-brand-600 text-white font-semibold text-sm hover:bg-brand-700 shadow-md shadow-brand-600/20 transition-all">
             <i data-lucide="layout-grid" class="w-4 h-4"></i>
             View Projects
           </a>
-          <a href="./samraat_resume.pdf" download class="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-slate-300 bg-white text-slate-700 font-semibold text-sm hover:bg-slate-50 transition-all shadow-sm">
+          <a href="resume.pdf" download onclick="handleResumeDownload(event)" class="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border border-slate-300 bg-white text-slate-700 font-semibold text-sm hover:bg-slate-50 transition-all shadow-sm">
             <i data-lucide="download" class="w-4 h-4"></i>
             Download Resume
           </a>
@@ -124,13 +132,13 @@
 
         <!-- Social Icons -->
         <div class="flex items-center gap-4 pt-4 text-slate-500">
-          <a href="https://linkedin.com" target="_blank" class="p-2.5 rounded-lg border border-slate-200 bg-white hover:text-brand-600 hover:border-brand-300 transition-all shadow-sm">
+          <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="p-3 rounded-xl border border-slate-200 bg-white hover:text-brand-600 hover:border-brand-300 transition-all shadow-sm">
             <i data-lucide="linkedin" class="w-5 h-5"></i>
           </a>
-          <a href="https://github.com" target="_blank" class="p-2.5 rounded-lg border border-slate-200 bg-white hover:text-brand-600 hover:border-brand-300 transition-all shadow-sm">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="p-3 rounded-xl border border-slate-200 bg-white hover:text-brand-600 hover:border-brand-300 transition-all shadow-sm">
             <i data-lucide="github" class="w-5 h-5"></i>
           </a>
-          <a href="mailto:contact@samraat.dev" class="p-2.5 rounded-lg border border-slate-200 bg-white hover:text-brand-600 hover:border-brand-300 transition-all shadow-sm">
+          <a href="mailto:contact@samraat.dev" aria-label="Email Samraat" class="p-3 rounded-xl border border-slate-200 bg-white hover:text-brand-600 hover:border-brand-300 transition-all shadow-sm">
             <i data-lucide="mail" class="w-5 h-5"></i>
           </a>
         </div>
@@ -138,37 +146,39 @@
 
       <!-- Right Visual with Badges -->
       <div class="lg:col-span-5 flex justify-center">
-        <div class="relative w-72 sm:w-80 md:w-96 aspect-square">
+        <div class="relative w-64 sm:w-80 md:w-96 aspect-square">
           <div class="w-full h-full rounded-full bg-gradient-to-tr from-brand-600 to-cyan-400 p-2 shadow-2xl">
             <div class="w-full h-full rounded-full bg-slate-100 overflow-hidden border-4 border-white flex items-center justify-center">
-              <!-- Point 'src' below to your photo's local path e.g., src="./profile.jpg" -->
+              <!-- Point 'src' below to your photo's local path -->
               <img 
                 id="userPhoto"
-                src="./profile.jpg" 
-                alt="Samraat" 
+                src="WhatsApp Image 2026-11-17 at 5.07.48 PM.jpeg" 
+                alt="Samraat - Data Analyst" 
                 class="w-full h-full object-cover"
                 onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=800&q=80';"
               />
             </div>
           </div>
 
-          <div class="absolute -top-3 -left-4 sm:-left-6 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-lg border border-slate-100 flex items-center gap-3">
+          <!-- Top-left floating badge -->
+          <div class="absolute -top-3 -left-2 sm:-left-6 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-lg border border-slate-100 flex items-center gap-3">
             <div class="w-9 h-9 rounded-xl bg-brand-50 flex items-center justify-center text-brand-600">
               <i data-lucide="database" class="w-5 h-5"></i>
             </div>
             <div>
               <p class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Expertise</p>
-              <p class="text-sm font-bold text-slate-800">SQL & ETL</p>
+              <p class="text-sm font-bold text-slate-800">Power BI & Tableau</p>
             </div>
           </div>
 
-          <div class="absolute -bottom-3 -right-4 sm:-right-6 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-lg border border-slate-100 flex items-center gap-3">
+          <!-- Bottom-right floating badge -->
+          <div class="absolute -bottom-3 -right-2 sm:-right-6 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl shadow-lg border border-slate-100 flex items-center gap-3">
             <div class="w-9 h-9 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600">
               <i data-lucide="trending-up" class="w-5 h-5"></i>
             </div>
             <div>
               <p class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Impact Driven</p>
-              <p class="text-sm font-bold text-slate-800">+25% ROI Growth</p>
+              <p class="text-sm font-bold text-slate-800"></p>
             </div>
           </div>
         </div>
@@ -177,111 +187,201 @@
     </div>
 
     <!-- Stats Bar -->
-    <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 bg-white p-8 rounded-2xl border border-slate-200/80 shadow-sm">
-      <div class="text-center">
-        <p class="text-3xl sm:text-4xl font-extrabold text-brand-600">1+</p>
-        <p class="text-xs sm:text-sm text-slate-500 font-medium mt-1">Years Experience</p>
+    <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 bg-white p-6 sm:p-8 rounded-2xl border border-slate-200/80 shadow-sm">
+      <div class="text-center p-2">
+        <p class="text-3xl sm:text-4xl font-extrabold text-brand-600">5+</p>
+        <p class="text-xs sm:text-sm text-slate-500 font-medium mt-1">Months Experience</p>
       </div>
-      <div class="text-center border-l border-slate-100">
+      <div class="text-center p-2 md:border-l border-slate-100">
         <p class="text-3xl sm:text-4xl font-extrabold text-brand-600">5+</p>
         <p class="text-xs sm:text-sm text-slate-500 font-medium mt-1">Projects Completed</p>
       </div>
-      <div class="text-center border-l border-slate-100">
-        <p class="text-3xl sm:text-4xl font-extrabold text-brand-600">98%</p>
+      <div class="text-center p-2 md:border-l border-slate-100">
+        <p class="text-3xl sm:text-4xl font-extrabold text-brand-600">75%</p>
         <p class="text-xs sm:text-sm text-slate-500 font-medium mt-1">Data Accuracy</p>
       </div>
-      <div class="text-center border-l border-slate-100">
-        <p class="text-3xl sm:text-4xl font-extrabold text-brand-600">15+</p>
+      <div class="text-center p-2 md:border-l border-slate-100">
+        <p class="text-3xl sm:text-4xl font-extrabold text-brand-600">5+</p>
         <p class="text-xs sm:text-sm text-slate-500 font-medium mt-1">Dashboards Built</p>
       </div>
     </div>
   </section>
 
-  <!-- ================= ABOUT ME ================= -->
-  <section id="about" class="py-20 bg-slate-50/70 border-t border-slate-200/70">
-    <div class="max-w-7xl mx-auto px-6">
+  <!-- ================= ABOUT ME & DASHBOARD SHOWCASE ================= -->
+  <section id="about" class="py-20 bg-slate-50/70 border-t border-b border-slate-200/70">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
       
-      <div class="text-center max-w-2xl mx-auto mb-16">
+      <!-- Section Header -->
+      <div class="text-center max-w-2xl mx-auto mb-14">
         <p class="text-xs font-bold text-brand-600 uppercase tracking-widest mb-2">About Me</p>
         <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Bridging Raw Data and Business Strategy</h2>
         <div class="w-16 h-1 bg-brand-600 mx-auto mt-4 rounded-full"></div>
       </div>
 
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-        <div class="lg:col-span-7 space-y-5 text-slate-600 leading-relaxed">
-          <p>
-            I am a results-driven Data Analyst with a deep passion for translating complex dataset architecture into clear, visual, and actionable business intelligence.
-          </p>
-          <p>
-            With expertise spanning across data wrangling, predictive modeling, statistical testing, and executive dashboard design, I help businesses discover hidden trends, optimize operations, and improve key performance indicators.
-          </p>
-          <p>
-            Whether it's building automated ETL pipelines in PostgreSQL, writing complex statistical algorithms in Python, or building real-time dashboards in Tableau & Power BI, my goal is always to deliver clarity out of complexity.
-          </p>
+      <!-- Bio & Core Competencies Row -->
+      <div class="bg-white rounded-3xl border border-slate-200/80 shadow-sm p-6 sm:p-10 mb-14">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="lg:col-span-7 space-y-4 text-slate-600 leading-relaxed">
+            <h3 class="text-xl font-bold text-slate-900">Analytical Mindset, Business-First Execution</h3>
+            <p>
+              I am a results-driven Data Analyst with a deep passion for translating complex dataset architecture into clear, visual, and actionable business intelligence.
+            </p>
+            
+          </div>
 
-          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4">
-            <div class="flex items-center gap-3">
-              <div class="w-6 h-6 rounded-full bg-brand-50 flex items-center justify-center text-brand-600">
-                <i data-lucide="check" class="w-4 h-4"></i>
+          <!-- Core Competencies Grid -->
+          <div class="lg:col-span-5 bg-slate-50 rounded-2xl p-6 border border-slate-200/60">
+            <p class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-4">Core Competencies</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="flex items-center gap-3 bg-white p-3 rounded-xl border border-slate-100 shadow-sm">
+                <div class="w-7 h-7 rounded-lg bg-brand-50 flex items-center justify-center text-brand-600 shrink-0">
+                  <i data-lucide="check" class="w-4 h-4"></i>
+                </div>
+                <span class="text-sm font-semibold text-slate-800">Data Storytelling</span>
               </div>
-              <span class="text-sm font-semibold text-slate-800">Data Storytelling</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <div class="w-6 h-6 rounded-full bg-brand-50 flex items-center justify-center text-brand-600">
-                <i data-lucide="check" class="w-4 h-4"></i>
+              <div class="flex items-center gap-3 bg-white p-3 rounded-xl border border-slate-100 shadow-sm">
+                <div class="w-7 h-7 rounded-lg bg-brand-50 flex items-center justify-center text-brand-600 shrink-0">
+                  <i data-lucide="check" class="w-4 h-4"></i>
+                </div>
+                <span class="text-sm font-semibold text-slate-800">Predictive Analytics</span>
               </div>
-              <span class="text-sm font-semibold text-slate-800">Predictive Analytics</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <div class="w-6 h-6 rounded-full bg-brand-50 flex items-center justify-center text-brand-600">
-                <i data-lucide="check" class="w-4 h-4"></i>
+              <div class="flex items-center gap-3 bg-white p-3 rounded-xl border border-slate-100 shadow-sm">
+                <div class="w-7 h-7 rounded-lg bg-brand-50 flex items-center justify-center text-brand-600 shrink-0">
+                  <i data-lucide="check" class="w-4 h-4"></i>
+                </div>
+                <span class="text-sm font-semibold text-slate-800">Automated Pipelines</span>
               </div>
-              <span class="text-sm font-semibold text-slate-800">Automated Pipeline</span>
-            </div>
-            <div class="flex items-center gap-3">
-              <div class="w-6 h-6 rounded-full bg-brand-50 flex items-center justify-center text-brand-600">
-                <i data-lucide="check" class="w-4 h-4"></i>
+              <div class="flex items-center gap-3 bg-white p-3 rounded-xl border border-slate-100 shadow-sm">
+                <div class="w-7 h-7 rounded-lg bg-brand-50 flex items-center justify-center text-brand-600 shrink-0">
+                  <i data-lucide="check" class="w-4 h-4"></i>
+                </div>
+                <span class="text-sm font-semibold text-slate-800">A/B Testing & KPIs</span>
               </div>
-              <span class="text-sm font-semibold text-slate-800">A/B Testing & Analysis</span>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="lg:col-span-5 space-y-4">
-          <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm flex items-start gap-4">
-            <div class="w-12 h-12 rounded-xl bg-brand-50 flex items-center justify-center text-brand-600 shrink-0">
-              <i data-lucide="zap" class="w-6 h-6"></i>
-            </div>
-            <div>
-              <h3 class="font-bold text-slate-800 text-base">Efficiency Focused</h3>
-              <p class="text-xs sm:text-sm text-slate-500 mt-1 leading-relaxed">
-                Reduced manual reporting overhead by 42% using automated Python & SQL pipelines.
-              </p>
-            </div>
+      <!-- BI Dashboard Gallery Subheader -->
+      <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+        <div>
+          <p class="text-xs font-bold text-brand-600 uppercase tracking-widest mb-1">BI Showcase</p>
+          <h3 class="text-2xl font-bold text-slate-900">Interactive Dashboard Gallery</h3>
+        </div>
+        <p class="text-sm text-slate-500">Executive reporting boards crafted in Tableau & Power BI</p>
+      </div>
+
+      <!-- Full-Width 6-Card Responsive 3-Column Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Dashboard 1 -->
+        <div class="group bg-white rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-lg transition-all overflow-hidden flex flex-col">
+          <div class="relative overflow-hidden h-48 bg-slate-100 border-b border-slate-100">
+            <img 
+              src="WhatsApp Image 2026-11-17 at 5.09.32 PM.jpeg" 
+              alt="Executive Sales Overview Dashboard" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80';"
+            />
           </div>
-
-          <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm flex items-start gap-4">
-            <div class="w-12 h-12 rounded-xl bg-cyan-50 flex items-center justify-center text-cyan-600 shrink-0">
-              <i data-lucide="layout-dashboard" class="w-6 h-6"></i>
+          <div class="p-6 flex-1 flex flex-col">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-brand-600 bg-brand-50 px-2.5 py-1 rounded-md">Tableau</span>
+              <span class="text-xs text-slate-400 font-medium">Sales BI</span>
             </div>
-            <div>
-              <h3 class="font-bold text-slate-800 text-base">BI Dashboard Expert</h3>
-              <p class="text-xs sm:text-sm text-slate-500 mt-1 leading-relaxed">
-                Designed 15+ interactive Tableau and Power BI boards for C-suite executive decision-making.
-              </p>
-            </div>
+            <h4 class="font-bold text-slate-800 text-base mt-3 group-hover:text-brand-600 transition-colors">Executive Sales Overview</h4>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1.5 leading-relaxed">
+              Interactive revenue tracking and regional performance board for leadership decision-making.
+            </p>
           </div>
+        </div>
 
-          <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm flex items-start gap-4">
-            <div class="w-12 h-12 rounded-xl bg-emerald-50 flex items-center justify-center text-emerald-600 shrink-0">
-              <i data-lucide="target" class="w-6 h-6"></i>
+        <!-- Dashboard 2 -->
+        <div class="group bg-white rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-lg transition-all overflow-hidden flex flex-col">
+          <div class="relative overflow-hidden h-48 bg-slate-100 border-b border-slate-100">
+            <img 
+              src="WhatsApp Image 2026-11-17 at 5.09.31 PM.jpeg" 
+              alt="Customer Retention & Churn Dashboard" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80';"
+            />
+          </div>
+          <div class="p-6 flex-1 flex flex-col">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-cyan-700 bg-cyan-50 px-2.5 py-1 rounded-md">Power BI</span>
+              <span class="text-xs text-slate-400 font-medium">Customer Analytics</span>
             </div>
-            <div>
-              <h3 class="font-bold text-slate-800 text-base">Statistical Precision</h3>
-              <p class="text-xs sm:text-sm text-slate-500 mt-1 leading-relaxed">
-                Conducted 30+ hypothesis tests and regression models driving revenue optimization.
-              </p>
+            <h4 class="font-bold text-slate-800 text-base mt-3 group-hover:text-brand-600 transition-colors">Customer Retention & Churn</h4>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1.5 leading-relaxed">
+              Cohort analysis and customer lifetime value metrics to identify at-risk segments.
+            </p>
+          </div>
+        </div>
+
+        <!-- Dashboard 3 -->
+        <div class="group bg-white rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-lg transition-all overflow-hidden flex flex-col">
+          <div class="relative overflow-hidden h-48 bg-slate-100 border-b border-slate-100">
+            <img 
+              src=""WhatsApp Image 2026-11-17 at 5.09.31 PM.jpeg
+              alt="Supply Chain & Inventory Dashboard" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80';"
+            />
+          </div>
+          <div class="p-6 flex-1 flex flex-col">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-brand-600 bg-brand-50 px-2.5 py-1 rounded-md">Tableau</span>
+              <span class="text-xs text-slate-400 font-medium">Operations</span>
             </div>
+            <h4 class="font-bold text-slate-800 text-base mt-3 group-hover:text-brand-600 transition-colors">Supply Chain & Inventory</h4>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1.5 leading-relaxed">
+              Real-time stock levels, supplier lead times, and fulfillment bottleneck monitoring.
+            </p>
+          </div>
+        </div>
+
+        
+        <!-- Dashboard 5 -->
+        <div class="group bg-white rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-lg transition-all overflow-hidden flex flex-col">
+          <div class="relative overflow-hidden h-48 bg-slate-100 border-b border-slate-100">
+            <img 
+              src="DDD.jpeg" 
+              alt="Marketing Campaign ROI Dashboard" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&w=800&q=80';"
+            />
+          </div>
+          <div class="p-6 flex-1 flex flex-col">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-brand-600 bg-brand-50 px-2.5 py-1 rounded-md">Tableau</span>
+              <span class="text-xs text-slate-400 font-medium">Growth & Ads</span>
+            </div>
+            <h4 class="font-bold text-slate-800 text-base mt-3 group-hover:text-brand-600 transition-colors">Marketing Campaign ROI</h4>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1.5 leading-relaxed">
+              Multi-channel attribution, ad spend efficiency, and conversion funnel analytics.
+            </p>
+          </div>
+        </div>
+
+        <!-- Dashboard 6 -->
+        <div class="group bg-white rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-lg transition-all overflow-hidden flex flex-col">
+          <div class="relative overflow-hidden h-48 bg-slate-100 border-b border-slate-100">
+            <img 
+              src="kok.jpeg" 
+              alt="HR & Workforce Analytics Dashboard" 
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=800&q=80';"
+            />
+          </div>
+          <div class="p-6 flex-1 flex flex-col">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-cyan-700 bg-cyan-50 px-2.5 py-1 rounded-md">Power BI</span>
+              <span class="text-xs text-slate-400 font-medium">People Ops</span>
+            </div>
+            <h4 class="font-bold text-slate-800 text-base mt-3 group-hover:text-brand-600 transition-colors">HR & Workforce Analytics</h4>
+            <p class="text-xs sm:text-sm text-slate-500 mt-1.5 leading-relaxed">
+              Employee headcount trends, hiring velocity, and department attrition insights.
+            </p>
           </div>
         </div>
 
@@ -290,7 +390,7 @@
   </section>
 
   <!-- ================= SKILLS ================= -->
-  <section id="skills" class="py-20 max-w-7xl mx-auto px-6">
+  <section id="skills" class="py-20 max-w-7xl mx-auto px-4 sm:px-6">
     <div class="text-center max-w-2xl mx-auto mb-16">
       <p class="text-xs font-bold text-brand-600 uppercase tracking-widest mb-2">Technical Toolkit</p>
       <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Skills & Analytical Competencies</h2>
@@ -298,105 +398,515 @@
     </div>
 
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-      <!-- Programming -->
+      <!-- Card 1: Programming (Progress bars synced to 60%, 49%, 50%) -->
       <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
-        <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center text-slate-700 mb-5">
+        <div class="w-11 h-11 rounded-xl bg-brand-50 flex items-center justify-center text-brand-600 mb-5">
           <i data-lucide="code" class="w-5 h-5"></i>
         </div>
         <h3 class="font-bold text-slate-900 text-lg mb-6">Programming</h3>
-
+ 
         <div class="space-y-4 text-xs font-medium">
           <div>
-            <div class="flex justify-between text-slate-600 mb-1">
+            <div class="flex justify-between text-slate-600 mb-1.5">
               <span>Python (Pandas, NumPy)</span>
-              <span class="font-semibold text-slate-900">82%</span>
+              <span class="font-semibold text-slate-900">60%</span>
             </div>
-            <div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
-              <div class="h-full bg-brand-600 rounded-full" style="width: 82%"></div>
+            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+              <div class="h-full bg-brand-600 rounded-full transition-all duration-700" style="width: 60%"></div>
             </div>
           </div>
 
           <div>
-            <div class="flex justify-between text-slate-600 mb-1">
+            <div class="flex justify-between text-slate-600 mb-1.5">
               <span>SQL (PostgreSQL, MySQL)</span>
-              <span class="font-semibold text-slate-900">95%</span>
+              <span class="font-semibold text-slate-900">49%</span>
             </div>
-            <div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
-              <div class="h-full bg-brand-600 rounded-full" style="width: 95%"></div>
+            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+              <div class="h-full bg-brand-600 rounded-full transition-all duration-700" style="width: 49%"></div>
             </div>
           </div>
 
           <div>
-            <div class="flex justify-between text-slate-600 mb-1">
+            <div class="flex justify-between text-slate-600 mb-1.5">
               <span>R (ggplot2, dplyr)</span>
-              <span class="font-semibold text-slate-900">80%</span>
+              <span class="font-semibold text-slate-900">50%</span>
             </div>
-            <div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
-              <div class="h-full bg-brand-600 rounded-full" style="width: 80%"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Visualization -->
-      <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
-        <div class="w-10 h-10 rounded-xl bg-cyan-50 flex items-center justify-center text-cyan-600 mb-5">
-          <i data-lucide="pie-chart" class="w-5 h-5"></i>
-        </div>
-        <h3 class="font-bold text-slate-900 text-lg mb-6">Visualization</h3>
-
-        <div class="space-y-4 text-xs font-medium">
-          <div>
-            <div class="flex justify-between text-slate-600 mb-1">
-              <span>Tableau Desktop</span>
-              <span class="font-semibold text-slate-900">90%</span>
-            </div>
-            <div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
-              <div class="h-full bg-cyan-500 rounded-full" style="width: 90%"></div>
-            </div>
-          </div>
-
-          <div>
-            <div class="flex justify-between text-slate-600 mb-1">
-              <span>Power BI (DAX, Power Query)</span>
-              <span class="font-semibold text-slate-900">88%</span>
-            </div>
-            <div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
-              <div class="h-full bg-cyan-500 rounded-full" style="width: 88%"></div>
-            </div>
-          </div>
-
-          <div>
-            <div class="flex justify-between text-slate-600 mb-1">
-              <span>Matplotlib & Seaborn</span>
-              <span class="font-semibold text-slate-900">85%</span>
-            </div>
-            <div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
-              <div class="h-full bg-cyan-500 rounded-full" style="width: 85%"></div>
+            <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden">
+              <div class="h-full bg-brand-600 rounded-full transition-all duration-700" style="width: 50%"></div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Tools & Cloud -->
-      <div class="bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm hover:shadow-md transition-shadow">
-        <div class="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center text-purple-600 mb-5">
-          <i data-lucide="cloud" class="w-5 h-5"></i>
-        </div>
-        <h3 class="font-bold text-slate-900 text-lg mb-6">Tools & Cloud</h3>
+               
+ 
 
-        <div class="space-y-4 text-xs font-medium">
-          <div>
-            <div class="flex justify-between text-slate-600 mb-1">
-              <span>Snowflake & BigQuery</span>
-              <span class="font-semibold text-slate-900">85%</span>
+      
+
+
+  <!-- ================= EXPERIENCE & CREDENTIALS ================= -->
+  <section id="experience" class="py-20 max-w-7xl mx-auto px-4 sm:px-6">
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <p class="text-xs font-bold text-brand-600 uppercase tracking-widest mb-2">Journey & Background</p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Experience & Certifications</h2>
+      <div class="w-16 h-1 bg-brand-600 mx-auto mt-4 rounded-full"></div>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+      <!-- Left: Work Timeline -->
+      <div class="lg:col-span-7 space-y-6">
+        <div class="flex items-center gap-3 mb-2">
+          <div class="w-9 h-9 rounded-xl bg-brand-50 text-brand-600 flex items-center justify-center">
+            <i data-lucide="briefcase" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-xl font-bold text-slate-900">Analytical Experience</h3>
+        </div>
+
+        <div class="relative pl-6 border-l-2 border-brand-100 space-y-8">
+          <!-- Item 1 -->
+          <div class="relative bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm">
+            <span class="absolute -left-[33px] top-7 w-4 h-4 rounded-full bg-brand-600 ring-4 ring-brand-50"></span>
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <span class="text-xs font-bold uppercase tracking-wider text-brand-600 bg-brand-50 px-3 py-1 rounded-full">2026 — Present (5+ Months)</span>
+              <span class="text-xs font-medium text-slate-400">Data Analytics & BI</span>
             </div>
-            <div class="w-full h-1.5 bg-slate-100 rounded-full overflow-hidden">
-              <div class="h-full bg-purple-500 rounded-full" style="width: 85%"></div>
-            </div>
+            <h4 class="text-lg font-bold text-slate-900">Junior Data Analyst</h4>
+            <p class="text-sm font-medium text-slate-500 mb-3">Business Intelligence & Reporting Operations</p>
+            <ul class="space-y-2 text-sm text-slate-600">
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-600 shrink-0 mt-0.5"></i>
+                <span>Designed and deployed 5+ interactive dashboards in Power BI and Tableau, reducing manual weekly reporting time by 40%.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-600 shrink-0 mt-0.5"></i>
+                <span>Cleaned, validated, and standardized multi-source datasets using SQL, Python (Pandas), and Excel Power Query, achieving 75%+ baseline data accuracy improvements.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-600 shrink-0 mt-0.5"></i>
+                <span>Partnered with cross-functional stakeholders to translate KPI trends into actionable marketing and operational recommendations (+25% ROI lift).</span>
+              </li>
+            </ul>
           </div>
 
-          <div>
-            <div class="flex justify-between text-slate-600 mb-1">
-              <span>Advanced Excel (VBA, Macros)</span>
-              <span class="font-semibold text-slate-900"
+          <!-- Item 2 -->
+          <div class="relative bg-white p-6 rounded-2xl border border-slate-200/80 shadow-sm">
+            <span class="absolute -left-[33px] top-7 w-4 h-4 rounded-full bg-slate-300 ring-4 ring-slate-100"></span>
+            <div class="flex flex-wrap items-center justify-between gap-2 mb-2">
+              <span class="text-xs font-bold uppercase tracking-wider text-slate-600 bg-slate-100 px-3 py-1 rounded-full">Capstone & Applied Projects</span>
+              <span class="text-xs font-medium text-slate-400">End-to-End Analytics</span>
+            </div>
+            <h4 class="text-lg font-bold text-slate-900">Data Analytics Fellow / Capstone Analyst</h4>
+            <p class="text-sm font-medium text-slate-500 mb-3">Applied Statistical Modeling & BI Visualization</p>
+            <ul class="space-y-2 text-sm text-slate-600">
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-600 shrink-0 mt-0.5"></i>
+                <span>Executed 5+ end-to-end analytics case studies spanning retail sales, customer churn prediction, supply chain optimization, and HR workforce metrics.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-brand-600 shrink-0 mt-0.5"></i>
+                <span>Built reusable SQL query templates and DAX measure libraries for cohort retention and variance analysis.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      
+          
+
+          
+
+  <!-- ================= CONTACT ================= -->
+  <section id="contact" class="py-20 bg-slate-900 text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        
+        <!-- Left Info -->
+        <div class="lg:col-span-5 space-y-6">
+          <p class="text-xs font-bold text-brand-500 uppercase tracking-widest">Get In Touch</p>
+          <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight leading-tight">
+            Let's Turn Your Data Into Strategic Decisions
+          </h2>
+          <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
+            Looking for a dedicated Data Analyst to build automated BI dashboards, clean complex pipelines, or uncover growth opportunities? Reach out directly and I'll respond within 24 hours.
+          </p>
+
+          <div class="space-y-4 pt-2">
+            <!-- Email Card with Copy -->
+            <div class="flex items-center justify-between p-4 rounded-2xl bg-slate-800/80 border border-slate-700/80">
+              <div class="flex items-center gap-3.5">
+                <div class="w-10 h-10 rounded-xl bg-brand-600/20 text-brand-400 flex items-center justify-center">
+                  <i data-lucide="mail" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <p class="text-xs text-slate-400">Email Address</p>
+                  <a href="mailto:nsamraat17@gmail.com" class="text-sm font-semibold text-white hover:text-brand-400 transition-colors">nsamraat17@gmail.com</a>
+                </div>
+              </div>
+              <button onclick="copyEmail()" class="px-3 py-1.5 rounded-lg bg-slate-700 hover:bg-slate-600 text-xs font-medium text-slate-200 transition-colors flex items-center gap-1.5">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                <span id="copyBtnText">Copy</span>
+              </button>
+            </div>
+
+            <!-- LinkedIn -->
+            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3.5 p-4 rounded-2xl bg-slate-800/80 border border-slate-700/80 hover:border-brand-500/50 transition-all">
+              <div class="w-10 h-10 rounded-xl bg-brand-600/20 text-brand-400 flex items-center justify-center">
+                <i data-lucide="linkedin" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <p class="text-xs text-slate-400">Professional Network</p>
+                <p class="text-sm font-semibold text-white">Connect on LinkedIn</p>
+              </div>
+            </a>
+
+            <!-- GitHub -->
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="flex items-center gap-3.5 p-4 rounded-2xl bg-slate-800/80 border border-slate-700/80 hover:border-brand-500/50 transition-all">
+              <div class="w-10 h-10 rounded-xl bg-brand-600/20 text-brand-400 flex items-center justify-center">
+                <i data-lucide="github" class="w-5 h-5"></i>
+              </div>
+              <div>
+                <p class="text-xs text-slate-400">Code & Notebooks</p>
+                <p class="text-sm font-semibold text-white">Explore GitHub Repositories</p>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Contact Form -->
+        <div class="lg:col-span-7">
+          <form id="contactForm" novalidate class="bg-white text-slate-800 p-6 sm:p-8 rounded-3xl shadow-2xl space-y-5">
+            <h3 class="text-xl font-bold text-slate-900">Send a Message</h3>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+              <div>
+                <label for="senderName" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Your Name *</label>
+                <input type="text" id="senderName" name="name" required placeholder="e.g., Priya Sharma" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all">
+              </div>
+              <div>
+                <label for="senderEmail" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Email Address *</label>
+                <input type="email" id="senderEmail" name="email" required placeholder="priya@company.com" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all">
+              </div>
+            </div>
+
+            <div>
+              <label for="subject" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Inquiry Type</label>
+              <select id="subject" name="subject" class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all">
+                <option value="Full-Time Data Analyst Role">Full-Time Data Analyst Role</option>
+                <option value="Freelance BI / Dashboard Project">Freelance BI / Dashboard Project</option>
+                <option value="SQL / Python Data Consultation">SQL / Python Data Consultation</option>
+                <option value="General Networking">General Networking</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="message" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-2">Message *</label>
+              <textarea id="message" name="message" rows="4" required placeholder="Tell me about your data goals, dashboard requirements, or open role..." class="w-full px-4 py-3 rounded-xl border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all"></textarea>
+            </div>
+
+            <!-- Form Feedback Banner -->
+            <div id="formFeedback" class="hidden p-4 rounded-xl text-sm font-medium"></div>
+
+            <button type="submit" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-xl bg-brand-600 text-white font-semibold text-sm hover:bg-brand-700 shadow-lg shadow-brand-600/25 transition-all">
+              <i data-lucide="send" class="w-4 h-4"></i>
+              <span>Send Message</span>
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="bg-slate-950 text-slate-400 py-8 border-t border-slate-800/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs sm:text-sm">
+      <div class="flex items-center gap-2">
+        <span class="font-bold text-white">SAMRAAT<span class="text-brand-500">.Data</span></span>
+        <span>&copy; 2026 All rights reserved.</span>
+      </div>
+      <div class="flex items-center gap-6">
+        <a href="#home" class="hover:text-white transition-colors">Home</a>
+        <a href="#about" class="hover:text-white transition-colors">About</a>
+        <a href="#skills" class="hover:text-white transition-colors">Skills</a>
+        <a href="#projects" class="hover:text-white transition-colors">Projects</a>
+      </div>
+    </div>
+  </footer>
+
+  
+
+  <!-- Toast Notification (for resume download / feedback) -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 hidden items-center gap-3 bg-slate-900 text-white px-5 py-3.5 rounded-2xl shadow-xl border border-slate-700 text-sm font-medium">
+    <i data-lucide="info" class="w-4 h-4 text-brand-400"></i>
+    <span id="toastText"></span>
+  </div>
+
+  <!-- ================= JAVASCRIPT ================= -->
+  <script>
+    // Initialize Lucide Icons
+    document.addEventListener('DOMContentLoaded', () => {
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+    });
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const menuIconOpen = document.getElementById('menuIconOpen');
+    const menuIconClose = document.getElementById('menuIconClose');
+
+    function toggleMobileMenu(forceClose = false) {
+      const isHidden = mobileMenu.classList.contains('hidden');
+      if (forceClose || !isHidden) {
+        mobileMenu.classList.add('hidden');
+        menuIconOpen.classList.remove('hidden');
+        menuIconClose.classList.add('hidden');
+      } else {
+        mobileMenu.classList.remove('hidden');
+        menuIconOpen.classList.add('hidden');
+        menuIconClose.classList.remove('hidden');
+      }
+    }
+
+    mobileMenuBtn.addEventListener('click', () => toggleMobileMenu());
+
+    document.querySelectorAll('.mobile-nav-link').forEach(link => {
+      link.addEventListener('click', () => toggleMobileMenu(true));
+    });
+
+    // Active Scroll Spy for Desktop Navigation
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('#desktopNav .nav-link');
+
+    window.addEventListener('scroll', () => {
+      let currentSection = '';
+      const scrollY = window.pageYOffset;
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop - 120;
+        const sectionHeight = section.offsetHeight;
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          currentSection = section.getAttribute('id');
+        }
+      });
+
+      navLinks.forEach(link => {
+        link.classList.remove('text-brand-600', 'font-semibold');
+        if (link.getAttribute('href') === `#${currentSection}`) {
+          link.classList.add('text-brand-600', 'font-semibold');
+        }
+      });
+    });
+
+    // Project Category Filtering
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const filter = btn.getAttribute('data-filter');
+
+        // Update active button styling
+        filterButtons.forEach(b => {
+          b.classList.remove('bg-brand-600', 'text-white', 'shadow-sm');
+          b.classList.add('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+        });
+        btn.classList.remove('bg-white', 'text-slate-600', 'border', 'border-slate-200');
+        btn.classList.add('bg-brand-600', 'text-white', 'shadow-sm');
+
+        // Show/hide cards
+        projectCards.forEach(card => {
+          const category = card.getAttribute('data-category');
+          if (filter === 'all' || category === filter) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    // Case Study Modal Data & Handlers
+    const caseStudies = [
+      {
+        title: "Telecom Customer Churn & Retention Model",
+        metric: "-14% Projected Churn",
+        image: "dashboard-2.jpg",
+        fallback: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+        tags: ["Power BI", "DAX", "SQL", "Cohort Analysis"],
+        summary: "Built a multi-page Power BI diagnostic suite evaluating 7,043 customer accounts to pinpoint early warning signs of subscription cancellation.",
+        highlights: [
+          "Identified that month-to-month fiber optic users without tech support accounted for 42% of total churn.",
+          "Created custom DAX measures for Customer Lifetime Value (CLV) and monthly recurring revenue at risk.",
+          "Proposed targeted 12-month contract incentives projected to reduce quarterly churn by 14%."
+        ]
+      },
+      {
+        title: "Omnichannel Retail Sales & Profit Optimization",
+        metric: "+18% Profit Margin Lift",
+        image: "dashboard-1.jpg",
+        fallback: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+        tags: ["Tableau", "Excel", "LOD Expressions", "KPI Design"],
+        summary: "Designed an interactive regional executive dashboard tracking $2.3M+ in sales across 4 regions and 17 product sub-categories.",
+        highlights: [
+          "Uncovered severe margin erosion caused by uncalibrated >30% discounting in Furniture & Office Supplies.",
+          "Implemented dynamic parameter controls allowing managers to simulate margin outcomes under capped discount tiers.",
+          "Streamlined regional quarterly business reviews into a single interactive Tableau storyboard."
+        ]
+      },
+      {
+        title: "E-Commerce RFM Customer Segmentation",
+        metric: "+25% Campaign ROI",
+        image: "dashboard-4.jpg",
+        fallback: "https://images.unsplash.com/photo-1543286386-713bdd548da4?auto=format&fit=crop&w=800&q=80",
+        tags: ["Python", "Pandas", "PostgreSQL", "Matplotlib"],
+        summary: "Processed 50,000+ e-commerce transactions using SQL window functions and Python Pandas to classify shoppers into actionable behavioral tiers.",
+        highlights: [
+          "Segmented customer base into Champions, Loyalists, At-Risk, and Hibernating cohorts using quintile RFM scoring.",
+          "Automated data cleaning scripts removing duplicate invoices and anomalous returns with 99.4% pipeline reliability.",
+          "Enabled marketing teams to reallocate ad spend toward high-LTV segments, boosting campaign ROI by 25%."
+        ]
+      },
+      {
+        title: "Supply Chain & Warehouse Bottleneck Tracker",
+        metric: "-22% Stockout Incidents",
+        image: "dashboard-3.jpg",
+        fallback: "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?auto=format&fit=crop&w=800&q=80",
+        tags: ["Tableau", "SQL", "Inventory Modeling"],
+        summary: "Created an operational visibility tool monitoring supplier fulfillment SLAs, safety stock ratios, and warehouse dispatch delays.",
+        highlights: [
+          "Flagged 3 underperforming logistics carriers responsible for 65% of late regional deliveries.",
+          "Established automated reorder-point alerts based on rolling 30-day demand velocity.",
+          "Reduced emergency restocking costs and stockout incidents by 22% over two quarters."
+        ]
+      },
+      {
+        title: "HR Workforce & Attrition Diagnostic Suite",
+        metric: "75%+ Data Accuracy Gain",
+        image: "kok.jpeg",
+        fallback: "https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=800&q=80",
+        tags: ["Power BI", "Power Query", "Advanced Excel"],
+        summary: "Unified fragmented departmental HR spreadsheets into a standardized Power Query data model for people-operations leadership.",
+        highlights: [
+          "Eliminated manual copy-paste errors across 8 regional CSV exports via automated Power Query transformations.",
+          "Visualized attrition hotspots by tenure bracket, manager span-of-control, and overtime hours.",
+          "Delivered self-service drill-through views for HR business partners."
+        ]
+      }
+    ];
+
+    function openProjectModal(index) {
+      const study = caseStudies[index];
+      if (!study) return;
+
+      const modal = document.getElementById('projectModal');
+      const img = document.getElementById('modalImage');
+      img.src = study.image;
+      img.onerror = function() {
+        this.onerror = null;
+        this.src = study.fallback;
+      };
+
+      document.getElementById('modalMetric').textContent = study.metric;
+      document.getElementById('modalTitle').textContent = study.title;
+      document.getElementById('modalSummary').textContent = study.summary;
+
+      const tagsContainer = document.getElementById('modalTags');
+      tagsContainer.innerHTML = study.tags.map(tag => 
+        `<span class="px-3 py-1 rounded-md bg-brand-50 text-brand-700 text-xs font-semibold">${tag}</span>`
+      ).join('');
+
+      const highlightsContainer = document.getElementById('modalHighlights');
+      highlightsContainer.innerHTML = study.highlights.map(item => 
+        `<li>${item}</li>`
+      ).join('');
+
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeProjectModal() {
+      const modal = document.getElementById('projectModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+      document.body.style.overflow = '';
+    }
+
+    // Close modal on backdrop click or Escape key
+    document.getElementById('projectModal').addEventListener('click', (e) => {
+      if (e.target.id === 'projectModal') closeProjectModal();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeProjectModal();
+    });
+
+    // Copy Email Helper (using execCommand fallback for iFrame safety)
+    function copyEmail() {
+      const email = 'contact@samraat.dev';
+      const tempInput = document.createElement('input');
+      tempInput.value = email;
+      document.body.appendChild(tempInput);
+      tempInput.select();
+      document.execCommand('copy');
+      document.body.removeChild(tempInput);
+
+      const btnText = document.getElementById('copyBtnText');
+      btnText.textContent = 'Copied!';
+      showToast('Email copied to clipboard: contact@samraat.dev');
+      setTimeout(() => {
+        btnText.textContent = 'Copy';
+      }, 2500);
+    }
+
+    // Toast Helper
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastText').textContent = message;
+      toast.classList.remove('hidden');
+      toast.classList.add('flex');
+      setTimeout(() => {
+        toast.classList.add('hidden');
+        toast.classList.remove('flex');
+      }, 3500);
+    }
+
+    // Graceful Resume Download Feedback
+    function handleResumeDownload() {
+      showToast('Downloading Samraat_Resume.pdf...');
+    }
+
+    // Interactive Contact Form Validation & Submission
+    const contactForm = document.getElementById('contactForm');
+    const formFeedback = document.getElementById('formFeedback');
+
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('senderName').value.trim();
+      const email = document.getElementById('senderEmail').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      formFeedback.classList.remove('hidden', 'bg-red-50', 'text-red-700', 'border-red-200', 'bg-emerald-50', 'text-emerald-700', 'border-emerald-200');
+
+      if (!name || !email || !message) {
+        formFeedback.textContent = 'Please fill in your name, email address, and message before sending.';
+        formFeedback.classList.add('bg-red-50', 'text-red-700', 'border', 'border-red-200');
+        return;
+      }
+
+      if (!emailRegex.test(email)) {
+        formFeedback.textContent = 'Please enter a valid email address.';
+        formFeedback.classList.add('bg-red-50', 'text-red-700', 'border', 'border-red-200');
+        return;
+      }
+
+      formFeedback.textContent = `Thank you, ${name}! Your message has been received. Samraat will reply to ${email} shortly.`;
+      formFeedback.classList.add('bg-emerald-50', 'text-emerald-700', 'border', 'border-emerald-200');
+      contactForm.reset();
+    });
+  </script>
+</body>
+</html>
